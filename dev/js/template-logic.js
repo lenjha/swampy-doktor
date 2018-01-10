@@ -1,22 +1,36 @@
 export function findLaunch(filterBy, filterValue, renderCallback){
-  const xhr = $.get(`https://api.spacexdata.com/v2/launches?${filterBy}=${filterValue}`
-);
-  xhr.done(function(response) {
-    // console.log("We got the data!", response);
+  let filters = [];
+  for (var i = 0; i < filterBy.length; i++) {
+    let by = filterBy[i];
+    let val = filterValue[i];
+    filters.push(`${by}=${val}`);
+  }
+  console.log(filters);
+  filters = filters.join("&");
+  const xhr = $.get(`https://api.spacexdata.com/v2/launches?${filters}`);
 
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    var match = response[0].links.video_link.match(regExp);
-    console.log(match);
-    let id;
-    if (match && match[2].length == 11) {
-        id = match[2];
-    } else {
-        id = 'error';
-    }
+  xhr.done(function(responses) {
 
-    renderCallback(id);
+    const ids = [];
+
+    responses.forEach(function(response){
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      var match = response.links.video_link.match(regExp);
+      console.log(ids);
+      console.log(match);
+      let id;
+      if (match && match[2].length == 11) {
+        ids.push(match[2]);
+
+      } else {
+        console.log("FAILURE to quantify");
+      }
+    });
+
+
+    renderCallback(ids);
   });
   xhr.fail(function() {
-    console.log("FAILURE");
-  })
+    console.log("FAILURE to reprogram the link to lowLetter");
+  });
 }
