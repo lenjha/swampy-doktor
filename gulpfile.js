@@ -42,7 +42,7 @@ gulp.task('jsBrowserify', ['concatInterface'], function() {
 //'$ gulp concatInterface' - gather all interface files from js/,
   //concatenate them and place in tmp/ directory
 gulp.task('concatInterface', function(){
-  return gulp.src(['js/*-interface.js'])
+  return gulp.src(['dev/js/*-interface.js'])
     .pipe(concat('allConcat.js'))
     .pipe(gulp.dest('./tmp'));
 });
@@ -61,7 +61,7 @@ gulp.task('clean', function(){
 
 //'$ gulp jshint'
 gulp.task('jshint', function(){
-  return gulp.src(['js/*.js'])
+  return gulp.src(['dev/js/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
@@ -89,7 +89,7 @@ gulp.task('cssConcat', ['bowerCSS', 'cssBuild'], function() {
 });
 
 gulp.task('cssBuild', function() {
- return gulp.src('./scss/main.scss')
+ return gulp.src('./dev/scss/main.scss')
    .pipe(sourcemaps.init())
    .pipe(sass().on('error', sass.logError))
    .pipe(sourcemaps.write())
@@ -106,7 +106,7 @@ gulp.task('build', ['clean'], function(){
 });
 
 
-gulp.task('serve', function() {
+gulp.task('serve', ['build'], function() {
  browserSync.init({
    server: {
      baseDir: "./",
@@ -114,10 +114,10 @@ gulp.task('serve', function() {
    }
  });
 
- gulp.watch(['js/*.js'], ['jsBuild']);
+ gulp.watch(['dev/js/*.js'], ['jsBuild']);
  gulp.watch(['bower.json'], ['bowerBuild']);
- gulp.watch(['*.html'], ['htmlBuild']);
- gulp.watch(['scss/*.scss', 'scss/**/*.scss'], ['cssConcat']);
+ gulp.watch(['dev/*.html'], ['htmlBuild']);
+ gulp.watch(['dev/scss/*.scss', 'scss/**/*.scss'], ['cssConcat']);
 
 });
 
