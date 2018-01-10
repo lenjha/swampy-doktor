@@ -116,7 +116,7 @@ gulp.task('serve', ['build'], function() {
 
  gulp.watch(['dev/js/*.js'], ['jsBuild']);
  gulp.watch(['bower.json'], ['bowerBuild']);
- gulp.watch(['dev/*.html'], ['htmlBuild']);
+ gulp.watch(['*.html'], ['htmlBuild']);
  gulp.watch(['dev/scss/*.scss', 'scss/**/*.scss'], ['cssConcat']);
 
 });
