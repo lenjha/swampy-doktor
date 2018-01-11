@@ -10,6 +10,13 @@
   <body>
     <div class="container">
       <div class="row">
+        <div class="col-sm-8">
+        </div>
+        <div class="col-sm-4" id="weather-area">
+          
+        </div>
+      </div>
+      <div class="row">
         <!-- INPUT FORM -->
         <div class="col-sm-6">
           <h3>Input</h3>
@@ -17,12 +24,12 @@
             <form id="look-up-form">
 
               <div class="group">
-                <label for="launch_year">Filter By Year</label>
+                <label for="launch_year">Year</label>
                 <input type="number" name="filter" id="launch_year">
               </div>
 
               <div class="group">
-                <label for="land_success">Filter By Land Success</label>
+                <label for="land_success">Land Success</label>
                 <select name="filter" id="land_success">
                   <option value=""></option>
                   <option value="true">Success</option>
@@ -31,7 +38,7 @@
               </div>
 
               <div class="group">
-                <label for="payload_id">Filter By Payload ID</label>
+                <label for="payload_id">Location</label>
                 <select name="filter" id="site_id">
                   <option value=""></option>
                   <option value="kwajalein_atoll">Kwajalein Atoll Omelek Island</option>

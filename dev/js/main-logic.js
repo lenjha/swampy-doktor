@@ -1,4 +1,4 @@
-export function findLaunch(filterBy, filterValue, renderCallback){
+export function findLaunch(filterBy, filterValue, render){
   let filters = [];
   for (var i = 0; i < filterBy.length; i++) {
     let by = filterBy[i];
@@ -8,9 +8,11 @@ export function findLaunch(filterBy, filterValue, renderCallback){
   filters = filters.join("&");
   const xhr = $.get(`https://api.spacexdata.com/v2/launches?${filters}`);
 
+  console.log(filters);
+
   xhr.done(function(responses) {
 
-    const ids = [];
+    const myIds = [];
     console.log(responses);
 
     responses.forEach(function(response){
@@ -19,7 +21,7 @@ export function findLaunch(filterBy, filterValue, renderCallback){
 
       let id;
       if (match && match[2].length == 11) {
-        ids.push(match[2]);
+        myIds.push(match[2]);
 
       } else {
         console.log("FAILURE to quantify");
@@ -27,7 +29,7 @@ export function findLaunch(filterBy, filterValue, renderCallback){
     });
 
 
-    renderCallback(ids);
+    render(myIds);
   });
   xhr.fail(function() {
     console.log("FAILURE to reprogram the link to lowLetter");
