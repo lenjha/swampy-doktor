@@ -8,19 +8,21 @@ $(document).ready(function(){
     let filterValue = [];
 
     $('*[name=filter]').each(function(){
-      if (this) {
         filterBy.push($(this).attr('id'));
-        filterValue.push($(this).val());
-      } else {
-        alert("fill out something dood!");
-      }
+        if ($(this).val()) {
+          filterValue.push($(this).val());
+        }
     });
-
-    findLaunch(filterBy, filterValue, render);
+    console.log(filterValue);
+    if (filterValue.length != 0) {
+      findLaunch(filterBy, filterValue, render);
+    } else {
+      alert("pick a filter yo!");
+    }
 
   });
   function render(myIds){
-    $("#results").text('')
+    $("#results").text('');
     myIds.forEach(function(myId){
       $("#results").append(`<iframe width="560" height="315" src="//www.youtube.com/embed/${myId}" frameborder="0" allowfullscreen></iframe>`);
     });

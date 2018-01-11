@@ -1,2 +1,3 @@
-https://github.com/r-spacex/SpaceX-API
-  video_link
+IDEAS!
+Another API to check on spaceweather, and/or weather at the time and place
+Stylizing to make it look like a TV or something
