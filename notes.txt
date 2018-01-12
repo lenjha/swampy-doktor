@@ -1,5 +1,14 @@
-IDEAS!
-Another API to check on spaceweather, and/or weather at the time and place
-Stylizing to make it look like a TV or something
+enter medical issue
+reference BetterDoctor API to retrieve the information
+fetch a list of doctors in Portland area that fit the search query
+enter a name to get a list of doctors matching the search query
+  if match: get doc info (first name, last name, address, phone number, website, and if the doc is available)
+  if no matches (NOT AN ERROR): return a notification saying no doctors meet the criteria
 
-response.history.dailysummary.meantempi
+
+
+create account and make API key
+use Epicodus as Organization/Company name when signing up
+API key as .env file, API key variable exports.apiKey in .env
+.env in .gitignore
+At least 2 JavaScript files - one to receive form input and another to make API request and display results
