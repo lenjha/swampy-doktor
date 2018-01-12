@@ -1,14 +1,15 @@
-enter medical issue
+DONE - enter medical issue AND/OR enter a name to get a list of doctors matching the search query
+
+DONE - clear form, taking values from them
+
 reference BetterDoctor API to retrieve the information
+
 fetch a list of doctors in Portland area that fit the search query
-enter a name to get a list of doctors matching the search query
+
+loop through, pushing into array via type - key-value-pairing
+
   if match: get doc info (first name, last name, address, phone number, website, and if the doc is available)
+
+  if error: state error type
+
   if no matches (NOT AN ERROR): return a notification saying no doctors meet the criteria
-
-
-
-create account and make API key
-use Epicodus as Organization/Company name when signing up
-API key as .env file, API key variable exports.apiKey in .env
-.env in .gitignore
-At least 2 JavaScript files - one to receive form input and another to make API request and display results
