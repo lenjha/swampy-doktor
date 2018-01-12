@@ -1,19 +1,31 @@
-import { findLaunch } from "./../dev/js/template-logic.js";
-import { weatherApi } from "./../dev/js/weather-logic.js";
+import { findLaunch } from "./../dev/js/main-logic.js";
 
 $(document).ready(function(){
 
 // FUNCTION DEFINITIONS
-  function render(myIds){
-    $("#results").text('');
-    myIds.forEach(function(myId){
-      $("#results").append(`<iframe width="560" height="315" src="//www.youtube.com/embed/${myId}" frameborder="0" allowfullscreen></iframe>`);
-    });
+  function render(myIds, flightNumbers, dates, payloads, temperatures){
+    $("#results").text(''); //clear the section
+
+    for (var i = 0; i < flightNumbers.length; i++) {
+      let myId = myIds[i];
+      let flightNumber = flightNumbers[i];
+      let payload = payloads[i];
+      let temperature = temperatures[i];
+      let template = `<div class="item">
+      <h2>launch ${flightNumber}</h2>
+      <div class="meta"><span class="meta-title">Payload: </span>${payload}</div>
+      <div class="meta"><span class="meta-title">Temperature: </span>${temperature}</div>
+      <iframe width="560" height="315" src="//www.youtube.com/embed/${myId}" frameborder="0" allowfullscreen></iframe>
+      </div>`
+
+      $("#results").append(template); //output the section
+    }
+
   }
-  function weatherReport(temperature){
-    $('#weather-area').text(`The temperature in Portland, Oregon is ${temperature} degrees`)
-  }
-  weatherApi(weatherReport);
+  // function weatherReport(temperature){
+  //   $('#weather-area').text(`The temperature in ${} is ${temperature} degrees`)
+  // }
+  // weatherApi(weatherReport);
 
   // CLICK FUNCTION
   $("#submit-form").click(function(event){
