@@ -2,6 +2,8 @@ DONE - enter medical issue AND/OR enter a name to get a list of doctors matching
 
 DONE - clear form, taking values from them
 
+use values to make an API call...
+
 reference BetterDoctor API to retrieve the information
 
 fetch a list of doctors in Portland area that fit the search query
